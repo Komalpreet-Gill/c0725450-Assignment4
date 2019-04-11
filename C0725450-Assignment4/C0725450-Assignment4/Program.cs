@@ -100,7 +100,8 @@ namespace C0725450_Assignment4
 
         public double AverageNumberOfLetters(string text)
         {
-            double average = ((text.Length - FindNumberOfBlankSpaces(text) / FindNumberOfWords(text)));
+            
+            double average = ((text.Length - FindNumberOfBlankSpaces(text)) / (float)FindNumberOfWords(text));
             Console.WriteLine("Average is " + average);
             return average;
         }
