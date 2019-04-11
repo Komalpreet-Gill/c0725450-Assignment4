@@ -19,7 +19,9 @@ namespace C0725450_Assignment4
             p.Run();
             string text = System.IO.File.ReadAllText("U:/Users/725450/C0725450-Assignment4/Beowulf.txt");
             p.FindNumberOfBlankSpaces(text);
-            p.FindNumberOfWords(text);
+            p.ProcessArrayList();
+            
+            
 
         }
 
@@ -43,11 +45,10 @@ namespace C0725450_Assignment4
 
                     counter++;
                 }
-
+                               
                 file.Close();
                 Console.WriteLine($"File has {counter} lines.");
-
-                
+                          
             }
         }
 
@@ -74,25 +75,31 @@ namespace C0725450_Assignment4
             return countSpaces;
         }
 
-        public int FindNumberOfWords(string line)
+        public void ProcessArrayList()
         {
-
-            int countlines1 = 0;
-            int countlines2 = 0;
-            if (line.Contains("Sea"))
+            int LineNumber = 0;
+            foreach (var line in Beowulf)
+                
             {
-                countlines1++;
+                
+                if (ContainWord(line.ToString().ToLower(), "sea") && ContainWord(line.ToString().ToLower(), "fare"))
+                {
+                    Console.WriteLine(line);
+                    Console.WriteLine("Line number is {0}", LineNumber);
+                    LineNumber++;
+                }
             }
-            if (line.Contains("Fare"))
-            {
-                countlines2++;
-            }
-
-            int countlines = countlines1 + countlines2;
-            Console.WriteLine("The lines that contains Sea and Fare are " + countlines);
-            return countlines;
+            Console.WriteLine(LineNumber);
         }
-
+       
+        public bool ContainWord(string line, string Word)
+        {
+            if(line.Contains(Word) == true)
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }
