@@ -11,6 +11,25 @@ namespace C0725450_Assignment4
 {
     class Program
     {
+        //this is my report:
+
+        //How many lines in total are there in the file:  4016
+
+        //How many WORDS are there in the file: 34573
+
+        //Line numbers of the lines which contain BOTH of these words:
+        //Sea and Fare(cover both upper and lower case)
+        //the numbers are : 10
+
+        //Line numbers of the lines which contain the word:  Fare
+        //Without the word: War
+
+        //14
+
+        //Average number of letters per word returned as a float
+
+        //1.45995429959795
+
         ArrayList Beowulf;
         static void Main(string[] args)
         {
@@ -20,6 +39,7 @@ namespace C0725450_Assignment4
             string text = System.IO.File.ReadAllText("U:/Users/725450/C0725450-Assignment4/Beowulf.txt");
             p.FindNumberOfBlankSpaces(text);
             p.ProcessArrayList();
+            p.ProcessArrayList1();
             p.FindNumberOfWords(text);
             p.AverageNumberOfLetters(text);
 
@@ -122,7 +142,24 @@ namespace C0725450_Assignment4
             }
             Console.WriteLine(LineNumber);
         }
-       
+
+        public void ProcessArrayList1()
+        {
+            int LineNumber = 0;
+            foreach (var line in Beowulf)
+
+            {
+
+                if (ContainWord(line.ToString().ToLower(), "sea") && ContainWord(line.ToString().ToLower(), "fare"))
+                {
+                    Console.WriteLine(line);
+                    Console.WriteLine("Line number is {0}", LineNumber);
+                    LineNumber++;
+                }
+            }
+            Console.WriteLine(LineNumber);
+        }
+
         public bool ContainWord(string line, string Word)
         {
             if(line.Contains(Word) == true)
