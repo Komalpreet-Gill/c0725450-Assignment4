@@ -82,7 +82,7 @@ namespace C0725450_Assignment4
                 
             {
                 
-                if (ContainWord(line.ToString().ToLower(), "sea") && ContainWord(line.ToString().ToLower(), "fare"))
+                if (!ContainWord(line.ToString().ToLower(), "war") && ContainWord(line.ToString().ToLower(), "fare"))
                 {
                     Console.WriteLine(line);
                     Console.WriteLine("Line number is {0}", LineNumber);
