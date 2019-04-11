@@ -20,8 +20,8 @@ namespace C0725450_Assignment4
             string text = System.IO.File.ReadAllText("U:/Users/725450/C0725450-Assignment4/Beowulf.txt");
             p.FindNumberOfBlankSpaces(text);
             p.ProcessArrayList();
-            
-            
+            p.FindNumberOfWords(text);
+            p.AverageNumberOfLetters(text);
 
         }
 
@@ -71,8 +71,38 @@ namespace C0725450_Assignment4
                 
             }
             Console.WriteLine("Number of Blank Spaces: "+countSpaces);
-            Console.WriteLine("Number of words: " + countletters);
-            return countSpaces;
+            Console.WriteLine("Number of letters: " + countletters);
+            return countletters;
+        }
+        public int FindNumberOfWords(string x)
+        {
+            int result = 0;
+
+            //Trim whitespace from beginning and end of string
+            x = x.Trim();
+
+            //Necessary because foreach will execute once with empty string returning 1
+            if (x == "")
+                return 0;
+
+            //Ensure there is only one space between each word in the passed string
+            while (x.Contains("  "))
+                x = x.Replace("  ", " ");
+
+            //Count the words
+            foreach (string y in x.Split(' '))
+                result++;
+
+            Console.WriteLine("Result is " + result);
+            return result;
+
+        }
+
+        public double AverageNumberOfLetters(string text)
+        {
+            double average = ((text.Length - FindNumberOfBlankSpaces(text) / FindNumberOfWords(text)));
+            Console.WriteLine("Average is " + average);
+            return average;
         }
 
         public void ProcessArrayList()
